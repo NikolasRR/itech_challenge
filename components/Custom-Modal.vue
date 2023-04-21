@@ -1,26 +1,29 @@
 <template>
   <div class="warning">
     <p>{{ error }}</p>
-    <button>OK</button>
+    <p>{{ modalOpen }}</p>
+    <button @click.left="updateModalStatus()">OK</button>
   </div>
 </template>
 
 <script>
-  export default {
-    props: ["error", "modalOpen"],
-    methods: {
+export default {
+  props: ["error", "modalOpen"],
+  computed: {},
+  methods: {
     updateModalStatus: function () {
-      this.$emit('button', !this.modalOpen);
+      console.log('rodou');
+      this.$emit('click'); 
     }
   }
-  }
+}
 </script>
 
 <style>
 .warning {
   height: 200px;
   width: 400px;
-  background-color: brown;
+  background-color: #2b3034;
   border-radius: 20px;
   z-index: 2;
   position: fixed;
@@ -32,10 +35,11 @@
   justify-content: center;
 }
 
-.warning > button {
+.warning>button {
   width: 100px;
   height: 40px;
   margin-top: 20px;
+  border: none;
+  border-radius: 5px;
 }
-
 </style>

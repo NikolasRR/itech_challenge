@@ -15,7 +15,7 @@
       <button class="button" @click.prevent="handleSubmit()">sign up</button>
     </form>
     <NuxtLink class="signUpSwitch" to="/sign-in">Already have an account? Log in.</NuxtLink>
-    <CustomModal v-if="modalOpen" :error="errorMessage"/>
+    <CustomModal v-if="modalOpen" v-model="modalOpen" @click="closeModal()" :error="errorMessage" />
   </main>
 </template>
 
@@ -29,7 +29,7 @@ export default {
       email: "",
       password: "",
       name: "",
-      modalOpen: true,
+      modalOpen: false,
       errorMessage: "lalalal"
     }
   },
@@ -37,20 +37,23 @@ export default {
   methods: {
     async handleSubmit() {
       try {
-        // await this.$axios.$post(
-        //   `${process.env.baseUrl}/sign-up`,
-        //   {
-        //     name: this.name,
-        //     email: this.email,
-        //     password: this.password
-        //   }
-        // );
-        let newUrl = this.$route.path.replace('/', '/dashboard')
+        await this.$axios.$post(
+          `${process.env.baseUrl}/sign-up`,
+          {
+            name: this.name,
+            email: this.email,
+            password: this.password
+          }
+        );
+        let newUrl = this.$route.path.replace('/', '/sign-in')
         this.$router.replace(newUrl);
       } catch (error) {
-        console.log(error);
-        // this.errorMessage = error;
+        this.errorMessage = error.response.data.info;
+        this.modalOpen = true;
       }
+    },
+    closeModal() {
+      this.modalOpen = false;
     }
   }
 }
@@ -59,12 +62,11 @@ export default {
 <style>
 .container {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  background-color: blueviolet;
-  height: 100vh;
-  width: 100vw;
+  background-color: #4395d6;
+  height: 100%;
+  width: 100%;
 }
 
 .title {
@@ -77,10 +79,10 @@ export default {
 
 .form {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   min-height: 190px;
+  flex-shrink: 0;
 }
 
 .button {
@@ -97,8 +99,7 @@ export default {
 .signUpSwitch {
   text-decoration: underline;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 10px 0;
   color: white;
 }
-
 </style>
