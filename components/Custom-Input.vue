@@ -1,10 +1,15 @@
 <template>
-    <input class="input" :type="inputType" :placeholder="placeholder" />
+    <input class="input" v-bind:value="model" v-on:input="updateInputValue($event.target.value)" :type="inputType" :placeholder="placeholder" />
 </template>
 
 <script>
 export default {
-  props: ['inputType', 'placeholder']
+  props: ['inputType', 'placeholder', 'model'],
+  methods: {
+    updateInputValue: function (value) {
+      this.$emit('input', value);
+    }
+  }
 }
 </script>
 

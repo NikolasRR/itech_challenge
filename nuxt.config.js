@@ -1,7 +1,9 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
+  env: {
+    baseUrl: process.env.BASE_URL
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'itech_front',
@@ -44,7 +46,15 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.API_URL,
+    baseURL: process.env.baseUrl,
+    browserBaseURL: '/',
+    credentials: true,
+    proxy: true
+  },
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.baseUrl,
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
