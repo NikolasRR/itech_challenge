@@ -40,6 +40,9 @@ export default {
           {
             email: this.email,
             password: this.password
+          },
+          {
+            withCredentials: true
           }
         );
         let newUrl = this.$route.path.replace('/sign-in', '/dashboard')

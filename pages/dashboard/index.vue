@@ -2,45 +2,30 @@
   <div class="container">
     <Header />
     <main class="charts-container">
-      <div class="chart">
-        <h4>chart 1</h4>
-        <div class="chart-body">
-          <client-only>
-            <CustomLineChart />
-          </client-only>
-        </div>
-      </div>
-
-      <div class="chart">
-        <h4>chart 1</h4>
-        <div class="chart-body">
-          <client-only>
-            <CustomBarChart />
-          </client-only>
-        </div>
-      </div>
-
-      <div class="chart">
-        <h4>chart 1</h4>
-        <div class="chart-body">
-          <client-only>
-            <CustomPieChart />
-          </client-only>
-        </div>
-      </div>
+      <CustomDoughnutChart />
+      <CustomRadarChart />
+      <CustomBarChart />
     </main>
   </div>
 </template>
 
 <script>
 import CustomBarChart from '../../components/CustomBarChart.vue';
-import CustomLineChart from '../../components/CustomLineChart.vue';
-import CustomPieChart from '../../components/CustomPieChart.vue';
+import CustomDoughnutChart from '../../components/CustomDoughnutChart.vue';
+import CustomRadarChart from '../../components/CustomRadarChart.vue';
 import Header from '../../components/Header.vue';
 
 export default {
   name: "DashboardPage",
-  components: { Header, CustomPieChart, CustomBarChart, CustomLineChart },
+  components: { Header, CustomBarChart, CustomDoughnutChart, CustomRadarChart },
+  async fetch() {
+    try {
+      await this.$axios.get(`${process.env.baseUrl}/auth`, { withCredentials: true });
+    } catch (error) {
+      let newUrl = this.$route.path.replace('/dashboard', '/sign-in')
+      this.$router.replace(newUrl);
+    }
+  }
 }
 </script>
 
@@ -67,7 +52,7 @@ export default {
   padding-left: 25px;
 }
 
-.chart > h4 {
+.chart>h4 {
   font-size: 25px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: rgba(133, 133, 133, 1);

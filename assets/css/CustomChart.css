@@ -1,0 +1,68 @@
+.chart {
+  background-color: white;
+  width: 550px;
+  height: 700px;
+  border: 4px rgba(133, 133, 133, 0.3) solid;
+  border-radius: 5px;
+  padding-left: 25px;
+  flex-shrink: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.selected {
+  border: 4px #ac21db solid !important;
+}
+
+.chart>h4 {
+  font-size: 25px;
+  color: rgba(133, 133, 133, 1);
+  margin: 8px 0 15px 0;
+}
+
+.chart>ul {
+  color: rgba(133, 133, 133, 1);
+  line-height: 30px;
+  display: list-item;
+  margin-top: 20px;
+  padding-left: 25px;
+}
+
+.listitem {
+  list-style-type: disc;
+  display: list-item;
+}
+
+.chart-body {
+  width: 500px;
+  height: 350px;
+}
+
+.lower-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 25px;
+  margin-top: 30px;
+}
+
+.lower-section>p {
+  color: #46c01d;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.lower-section>button {
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: #46c01d;
+  color: white;
+  cursor: pointer;
+}
+
+.selected button {
+  background-color: #ac21db;
+}

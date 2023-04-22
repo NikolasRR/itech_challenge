@@ -28,7 +28,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/chart.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,7 +49,7 @@ export default {
     baseURL: process.env.baseUrl,
     browserBaseURL: '/',
     credentials: true,
-    proxy: true
+    proxy: true,
   },
   privateRuntimeConfig: {
     axios: {
