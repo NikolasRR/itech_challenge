@@ -59,47 +59,5 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #4395d6;
-  height: 100%;
-  width: 100%;
-}
-
-.title {
-  font-size: 30px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  line-height: 40px;
-  text-align: center;
-  margin: 80px 0 30px 0;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 190px;
-  flex-shrink: 0;
-}
-
-.button {
-  width: 355px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: white;
-  margin-top: 10px;
-  border: none;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  cursor: pointer;
-}
-
-.signUpSwitch {
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 10px 0;
-  color: white;
-}
+<style scoped src="@/assets/css/SignUp.css">
 </style>

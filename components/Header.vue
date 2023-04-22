@@ -4,18 +4,4 @@
   </header>
 </template>
 
-<style>
-.header {
-  height: 120px;
-  width: 100vw;
-  background-color: #4395d6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header > h1 {
-  font-size: 35px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-</style>
+<style scoped src="@/assets/css/Header.css"></style>
