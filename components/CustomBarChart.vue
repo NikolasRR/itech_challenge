@@ -11,7 +11,7 @@
       <li class="listitem">Is full of rectangles</li>
       <li class="listitem">Has two axis</li>
       <li class="listitem">Accepts multiple colors</li>
-      <li class="listitem">Great for comparison of values by month</li>
+      <li class="listitem">Great for comparison of values</li>
       <li class="listitem">Easy to read</li>
     </ul>
     <div class="lower-section">
