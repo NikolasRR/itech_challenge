@@ -34,8 +34,8 @@ export default {
       email: "",
       password: "",
       name: "",
-      modalOpen: false,
-      errorMessage: "lalalal"
+      modalOpen: true,
+      errorMessage: "Something went wrong"
     }
   },
   components: { CustomInput, CustomModal },

@@ -1,8 +1,9 @@
 <template>
-  <div class="warning">
-    <p>{{ error }}</p>
-    <p>{{ modalOpen }}</p>
-    <button @click.left="updateModalStatus()">OK</button>
+  <div class="background">
+    <div class="warning">
+      <p>{{ error }}</p>
+      <button @click.left="updateModalStatus()">OK</button>
+    </div>
   </div>
 </template>
 
