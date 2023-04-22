@@ -14,7 +14,6 @@ export default {
   computed: {},
   methods: {
     updateModalStatus: function () {
-      console.log('rodou');
       this.$emit('click');
     }
   }

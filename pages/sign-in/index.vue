@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import CustomInput from '../../components/Custom-Input.vue';
-import CustomModal from '../../components/Custom-Modal.vue';
+import CustomInput from '../../components/CustomInput.vue';
+import CustomModal from '../../components/CustomModal.vue';
 
 export default {
   data() {
@@ -33,12 +33,22 @@ export default {
       email: "",
       password: "",
       modalOpen: false,
-      errorMessage: "something went wrong"
+      errorMessage: "Something went wrong"
     }
   },
   components: { CustomInput, CustomModal },
   methods: {
+    verifyForm() {
+      const formIsIncomplete = this.password === "" || this.email === "";
+      if (formIsIncomplete) {
+        this.errorMessage = "Fields are not allowed to be empty!";
+        this.modalOpen = true;
+      }
+      return formIsIncomplete;
+    },
     async handleSubmit() {
+      if (this.verifyForm()) return;
+
       try {
         await this.$axios.$post(
           `${process.env.baseUrl}/sign-in`,
@@ -52,6 +62,7 @@ export default {
         );
         let newUrl = this.$route.path.replace('/sign-in', '/dashboard')
         this.$router.replace(newUrl);
+
       } catch (error) {
         this.errorMessage = error.response.data.info;
         this.modalOpen = true;
