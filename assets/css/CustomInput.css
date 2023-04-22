@@ -10,3 +10,9 @@
 .input:focus {
   outline: none;
 }
+
+@media (max-width: 450px) {
+  .input {
+    width: 330px;
+  }
+}

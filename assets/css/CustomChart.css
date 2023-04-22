@@ -129,7 +129,7 @@
 @media (max-width: 500px) {
   .chart {
     width: 310px;
-    height: 650px;
+    height: 600px;
   }
 
   .chart-body {

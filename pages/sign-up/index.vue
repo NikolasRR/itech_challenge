@@ -1,20 +1,25 @@
 <template>
   <main class="container">
-    <h1 class="title">
-      you want charts?<br />
-      we got charts.<br />
-      lots of charts!<br />
-      how many charts?<br />
-      ...<br />
-      three charts
-    </h1>
-    <form class="form">
-      <CustomInput v-model="email" :inputType="'email'" :placeholder="'email'" />
-      <CustomInput v-model="password" :inputType="'password'" :placeholder="'password'" />
-      <CustomInput v-model="name" :inputType="'text'" :placeholder="'name'" />
-      <button class="button" @click.prevent="handleSubmit()">sign up</button>
-    </form>
-    <NuxtLink class="signUpSwitch" to="/sign-in">Already have an account? Log in.</NuxtLink>
+    <div class="presentation">
+      <h1 class="title">The Chart Store</h1>
+      <h2 class="sub-title">
+        you want charts?<br />
+        we got charts.<br />
+        lots of charts!<br />
+        how many charts?<br />
+        ...<br />
+        three charts
+      </h2>
+    </div>
+    <div class="form-div">
+      <form class="form">
+        <CustomInput v-model="email" :inputType="'email'" :placeholder="'email'" />
+        <CustomInput v-model="password" :inputType="'password'" :placeholder="'password'" />
+        <CustomInput v-model="name" :inputType="'text'" :placeholder="'name'" />
+        <button class="button" @click.prevent="handleSubmit()">Sign Up</button>
+      </form>
+      <NuxtLink class="signIpSwitch" to="/sign-in">Already have an account? Log in.</NuxtLink>
+    </div>
     <CustomModal v-if="modalOpen" v-model="modalOpen" @click="closeModal()" :error="errorMessage" />
   </main>
 </template>
@@ -59,5 +64,4 @@ export default {
 }
 </script>
 
-<style scoped src="@/assets/css/SignUp.css">
-</style>
+<style scoped src="@/assets/css/SignUp.css"></style>
