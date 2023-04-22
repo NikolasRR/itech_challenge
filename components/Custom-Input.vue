@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  name: 'CustomInput',
   props: ['inputType', 'placeholder', 'model'],
   methods: {
     updateInputValue: function (value) {
