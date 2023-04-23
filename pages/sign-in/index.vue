@@ -17,7 +17,7 @@
         <CustomInput :disabled="loading" v-model="password" :inputType="'password'" :placeholder="'password'" />
         <button :disabled="loading" class="button" @click.prevent="handleSubmit()">Sign In</button>
       </form>
-      <NuxtLink class="signUpSwitch" to="/sign-up">Already have an account? Log in.</NuxtLink>
+      <NuxtLink class="signUpSwitch" to="/sign-up">Don't have an account? Sign-up</NuxtLink>
     </div>
     <CustomModal v-if="modalOpen" v-model="modalOpen" @click="closeModal()" :error="errorMessage" />
   </main>

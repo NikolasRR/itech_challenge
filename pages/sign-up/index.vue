@@ -17,6 +17,7 @@
         <CustomInput :disabled="loading" v-model="password" :inputType="'password'" :placeholder="'password'" />
         <CustomInput :disabled="loading" v-model="name" :inputType="'text'" :placeholder="'name'" />
         <button :disabled="loading" class="button" @click.prevent="handleSubmit()">Sign Up</button>
+        <p v-if="creationSucessfull" class="sucess-alert">Account created!<br/> You will be redirected to sign-in</p>
       </form>
       <NuxtLink class="signIpSwitch" to="/sign-in">Already have an account? Log in.</NuxtLink>
     </div>
@@ -35,6 +36,7 @@ export default {
       password: "",
       name: "",
       loading: false,
+      creationSucessfull: false,
       modalOpen: false,
       errorMessage: "Something went wrong"
     }
@@ -46,6 +48,7 @@ export default {
       if (formIsIncomplete) {
         this.errorMessage = "Fields are not allowed to be empty!";
         this.modalOpen = true;
+        this.loading = false;
       }
       return formIsIncomplete;
     },
@@ -62,15 +65,18 @@ export default {
             password: this.password
           }
         );
-        let newUrl = this.$route.path.replace('/sign-up', '/sign-in')
-        this.$router.replace(newUrl);
+        this.creationSucessfull = true;
+        setTimeout(() => {
+          let newUrl = this.$route.path.replace('/sign-up', '/sign-in')
+          this.$router.replace(newUrl);
+          console.log('checkpoint');
+        }, 2000);
 
       } catch (error) {
         this.errorMessage = error.response.data.info;
         this.modalOpen = true;
+        this.loading = false;
       }
-
-      this.loading = false;
     },
     closeModal() {
       this.modalOpen = false;

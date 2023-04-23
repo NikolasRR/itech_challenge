@@ -34,10 +34,10 @@
 
 .form-div {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 35vw;
+  height: 100vh;
 }
 
 .form {
@@ -46,6 +46,7 @@
   align-items: center;
   min-height: 190px;
   flex-shrink: 0;
+  margin-top: 250px;
 }
 
 .button {
@@ -114,6 +115,10 @@
 
   .form-div {
     width: 450px;
+  }
+
+  .form {
+    margin-top: 0;
   }
 
 }
