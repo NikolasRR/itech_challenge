@@ -13,10 +13,10 @@
     </div>
     <div class="form-div">
       <form class="form">
-        <CustomInput v-model="email" :inputType="'email'" :placeholder="'email'" />
-        <CustomInput v-model="password" :inputType="'password'" :placeholder="'password'" />
-        <CustomInput v-model="name" :inputType="'text'" :placeholder="'name'" />
-        <button class="button" @click.prevent="handleSubmit()">Sign Up</button>
+        <CustomInput :disabled="loading" v-model="email" :inputType="'email'" :placeholder="'email'" />
+        <CustomInput :disabled="loading" v-model="password" :inputType="'password'" :placeholder="'password'" />
+        <CustomInput :disabled="loading" v-model="name" :inputType="'text'" :placeholder="'name'" />
+        <button :disabled="loading" class="button" @click.prevent="handleSubmit()">Sign Up</button>
       </form>
       <NuxtLink class="signIpSwitch" to="/sign-in">Already have an account? Log in.</NuxtLink>
     </div>
@@ -34,6 +34,7 @@ export default {
       email: "",
       password: "",
       name: "",
+      loading: false,
       modalOpen: false,
       errorMessage: "Something went wrong"
     }
@@ -49,6 +50,7 @@ export default {
       return formIsIncomplete;
     },
     async handleSubmit() {
+      this.loading = true;
       if (this.verifyForm()) return;
 
       try {
@@ -67,6 +69,8 @@ export default {
         this.errorMessage = error.response.data.info;
         this.modalOpen = true;
       }
+
+      this.loading = false;
     },
     closeModal() {
       this.modalOpen = false;

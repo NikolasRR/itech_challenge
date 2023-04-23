@@ -13,9 +13,9 @@
     </div>
     <div class="form-div">
       <form class="form">
-        <CustomInput v-model="email" :inputType="'email'" :placeholder="'email'" />
-        <CustomInput v-model="password" :inputType="'password'" :placeholder="'password'" />
-        <button class="button" @click.prevent="handleSubmit()">Sign In</button>
+        <CustomInput :disabled="loading" v-model="email" :inputType="'email'" :placeholder="'email'" />
+        <CustomInput :disabled="loading" v-model="password" :inputType="'password'" :placeholder="'password'" />
+        <button :disabled="loading" class="button" @click.prevent="handleSubmit()">Sign In</button>
       </form>
       <NuxtLink class="signUpSwitch" to="/sign-up">Already have an account? Log in.</NuxtLink>
     </div>
@@ -32,6 +32,7 @@ export default {
     return {
       email: "",
       password: "",
+      loading: false,
       modalOpen: false,
       errorMessage: "Something went wrong"
     }
@@ -47,6 +48,7 @@ export default {
       return formIsIncomplete;
     },
     async handleSubmit() {
+      this.loading = true;
       if (this.verifyForm()) return;
 
       try {
@@ -67,6 +69,8 @@ export default {
         this.errorMessage = error.response.data.info;
         this.modalOpen = true;
       }
+
+      this.loading = false;
     },
     closeModal() {
       this.modalOpen = false;
