@@ -50,6 +50,7 @@ export default {
     browserBaseURL: '/',
     credentials: true,
     proxy: true,
+    timeout: 10000
   },
   privateRuntimeConfig: {
     axios: {

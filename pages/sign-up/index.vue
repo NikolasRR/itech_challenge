@@ -73,7 +73,7 @@ export default {
         }, 2000);
 
       } catch (error) {
-        this.errorMessage = error.response.data.info;
+        if (error?.response) this.errorMessage = error.response.data.info;
         this.modalOpen = true;
         this.loading = false;
       }
